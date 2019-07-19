@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './App.module.scss';
 import Table from '../Table/Table';
+import Search from '../Search/Search';
 
 class App extends React.Component {
   state = {
@@ -19,7 +20,6 @@ class App extends React.Component {
           isLoaded: true,
           data: json
         });
-        console.log(json);
       })
       .catch(console.log);
   }
@@ -33,6 +33,7 @@ class App extends React.Component {
       return (
         <div className={styles.wrapper}>
           <h1 className={styles.header}>planets</h1>
+          <Search />
           <Table planets={data} />
         </div>
       );

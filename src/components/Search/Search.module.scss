@@ -1,0 +1,30 @@
+.wrapper {
+  display: flex;
+  align-items: baseline;
+}
+
+.searchBar {
+  border: 2px solid #b4a0e7;
+  margin: 0 10px 20px 0;
+  border-radius: 20px;
+  padding: 8px 12px;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.searchBtn {
+  font-size: 18px;
+  border: 0;
+  background-color: transparent;
+  cursor: pointer;
+
+  &:focus {
+    outline: none;
+  }
+
+  &:hover {
+    color: #b4a0e7;
+  }
+}
