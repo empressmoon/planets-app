@@ -4,13 +4,14 @@
 }
 
 .searchBar {
-  border: 2px solid #b4a0e7;
+  border: 2px solid #9d86de;
   margin: 0 10px 20px 0;
   border-radius: 20px;
   padding: 8px 12px;
 
   &:focus {
     outline: none;
+    box-shadow: 0 3px 10px -5px rgba(#818181, 0.9);
   }
 }
 

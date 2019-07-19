@@ -1,0 +1,25 @@
+.form {
+  margin: 30px 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.inputWrapper {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+}
+
+.input {
+  flex-grow: 1;
+  border: 2px solid #9d86de;
+  margin: 2px 5px 0 0;
+  border-radius: 5px;
+  padding: 6px 10px;
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 3px 10px -5px rgba(#818181, 0.9);
+  }
+}

@@ -19,7 +19,7 @@ class Table extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className={styles.wrapper}>
         <table className={styles.table}>
           <thead className={styles.header}>
             <tr>

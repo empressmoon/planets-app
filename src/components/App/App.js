@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './App.module.scss';
 import Table from '../Table/Table';
 import Search from '../Search/Search';
+import Form from '../Form/Form';
 
 class App extends React.Component {
   state = {
@@ -28,13 +29,14 @@ class App extends React.Component {
     const { isLoaded, data } = this.state;
 
     if (!isLoaded) {
-      return <div>Loading...</div>;
+      return <div className={styles.loading}>Loading...</div>;
     } else {
       return (
         <div className={styles.wrapper}>
           <h1 className={styles.header}>planets</h1>
           <Search />
           <Table planets={data} />
+          <Form />
         </div>
       );
     }

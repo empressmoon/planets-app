@@ -3,17 +3,19 @@ import styles from './Search.module.scss';
 
 class Search extends React.Component {
   state = {
-    value: this.props.searchString || ''
+    search: ''
   };
 
-  handleChange(event) {
+  updateSearch(event) {
     this.setState({
-      value: event.target.value
+      search: event.target.value
     });
+
+    console.log(this.state.search);
   }
 
   render() {
-    const { value } = this.state;
+    const { search } = this.state;
 
     return (
       <div className={styles.wrapper}>
@@ -21,8 +23,8 @@ class Search extends React.Component {
           className={styles.searchBar}
           type='text'
           placeholder='Search by planet name...'
-          value={value}
-          onChange={event => this.handleChange(event)}
+          value={search}
+          onChange={event => this.updateSearch(event)}
         />
         <button className={styles.searchBtn}>
           <i className={'fas fa-search'} />
