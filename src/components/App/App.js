@@ -1,8 +1,10 @@
 import React from 'react';
+import styles from './App.module.scss';
+import Table from '../Table/Table';
 
 class App extends React.Component {
   state = {
-    planets: [],
+    data: [],
     isLoaded: false
   };
 
@@ -12,23 +14,28 @@ class App extends React.Component {
 
     fetch(proxyUrl + url)
       .then(res => res.json())
-      .then(data => {
+      .then(json => {
         this.setState({
           isLoaded: true,
-          planets: data
+          data: json
         });
-        console.log(data);
+        console.log(json);
       })
       .catch(console.log);
   }
 
   render() {
-    const { isLoaded, planets } = this.state;
+    const { isLoaded, data } = this.state;
 
     if (!isLoaded) {
       return <div>Loading...</div>;
     } else {
-      return <h1>planets</h1>;
+      return (
+        <div className={styles.wrapper}>
+          <h1 className={styles.header}>planets</h1>
+          <Table planets={data} />
+        </div>
+      );
     }
   }
 }
