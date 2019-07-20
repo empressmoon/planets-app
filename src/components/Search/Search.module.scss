@@ -1,13 +1,14 @@
 .wrapper {
   display: flex;
   align-items: baseline;
+  position: relative;
 }
 
 .searchBar {
   border: 2px solid #9d86de;
   margin: 0 10px 30px 0;
   border-radius: 20px;
-  padding: 8px 12px;
+  padding: 8px 12px 8px 34px;
 
   &:focus {
     outline: none;
@@ -15,17 +16,10 @@
   }
 }
 
-.searchBtn {
-  font-size: 18px;
-  border: 0;
-  background-color: transparent;
-  cursor: pointer;
-
-  &:focus {
-    outline: none;
-  }
-
-  &:hover {
-    color: #b4a0e7;
-  }
+i {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-150%);
+  left: 12px;
+  color: #9d86de;
 }

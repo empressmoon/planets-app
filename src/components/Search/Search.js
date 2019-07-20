@@ -19,9 +19,7 @@ class Search extends React.Component {
           placeholder='Search by planet name...'
           onChange={this.filterUpdate}
         />
-        <button className={styles.searchBtn}>
-          <i className={'fas fa-search'} />
-        </button>
+        <i className={'fas fa-search'} />
       </div>
     );
   }
