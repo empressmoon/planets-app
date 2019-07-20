@@ -21,7 +21,7 @@ class Search extends React.Component {
       <div className={styles.wrapper}>
         <input
           className={styles.searchBar}
-          type='text'
+          type='search'
           placeholder='Search by planet name...'
           value={search}
           onChange={event => this.updateSearch(event)}

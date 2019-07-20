@@ -25,6 +25,22 @@ class App extends React.Component {
       .catch(console.log);
   }
 
+  addItem = e => {
+    e.preventDefault();
+
+    const newItem = {
+      name: e.target[0].value,
+      length_of_day: e.target[1].value,
+      number_of_moons: e.target[2].value
+    };
+
+    this.setState(prevState => ({
+      data: [...prevState.data, newItem]
+    }));
+
+    e.target.reset();
+  };
+
   render() {
     const { isLoaded, data } = this.state;
 
@@ -34,9 +50,10 @@ class App extends React.Component {
       return (
         <div className={styles.wrapper}>
           <h1 className={styles.header}>planets</h1>
-          <Search />
+          <Search planets={data} />
+
           <Table planets={data} />
-          <Form />
+          <Form submitFn={this.addItem} />
         </div>
       );
     }

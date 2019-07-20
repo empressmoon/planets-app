@@ -1,14 +1,16 @@
 import React from 'react';
 import styles from './Table.module.scss';
+import TableHeader from './TableHeader';
 
 class Table extends React.Component {
   renderTableData() {
     const { planets } = this.props;
 
     return planets.map(planet => {
-      const { id, name, length_of_day, number_of_moons } = planet;
+      const { name, length_of_day, number_of_moons } = planet;
+
       return (
-        <tr key={id}>
+        <tr key={planet.name}>
           <td>{name}</td>
           <td>{Math.floor(length_of_day)}</td>
           <td>{number_of_moons}</td>
@@ -17,16 +19,20 @@ class Table extends React.Component {
     });
   }
 
+  /*  sortBy = key => {
+    const { data } = this.state;
+    data.sort((a, b) => a[key] < b[key]);
+
+    this.setState({ data });
+    console.log('click');
+  }; */
+
   render() {
     return (
       <div className={styles.wrapper}>
         <table className={styles.table}>
           <thead className={styles.header}>
-            <tr>
-              <th>Planet name</th>
-              <th>Length of day [h]</th>
-              <th>Number of moons</th>
-            </tr>
+            <TableHeader sortByFn={this.sortBy} />
           </thead>
           <tbody>{this.renderTableData()}</tbody>
         </table>
