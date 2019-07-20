@@ -2,43 +2,33 @@ import React from 'react';
 import styles from './Table.module.scss';
 import TableHeader from './TableHeader';
 
-class Table extends React.Component {
-  renderTableData() {
-    const { planets } = this.props;
-
-    return planets.map(planet => {
-      const { name, length_of_day, number_of_moons } = planet;
+const Table = ({ data, searchString }) => {
+  const planetsList = data
+    .filter(planet => {
+      return planet.name.toLowerCase().indexOf(searchString.toLowerCase()) >= 0;
+    })
+    .map(planet => {
+      const { name, length_of_day: lengthDay, number_of_moons: moons } = planet;
 
       return (
         <tr key={planet.name}>
           <td>{name}</td>
-          <td>{Math.floor(length_of_day)}</td>
-          <td>{number_of_moons}</td>
+          <td>{Math.floor(lengthDay)}</td>
+          <td>{moons}</td>
         </tr>
       );
     });
-  }
 
-  /*  sortBy = key => {
-    const { data } = this.state;
-    data.sort((a, b) => a[key] < b[key]);
-
-    this.setState({ data });
-    console.log('click');
-  }; */
-
-  render() {
-    return (
-      <div className={styles.wrapper}>
-        <table className={styles.table}>
-          <thead className={styles.header}>
-            <TableHeader sortByFn={this.sortBy} />
-          </thead>
-          <tbody>{this.renderTableData()}</tbody>
-        </table>
-      </div>
-    );
-  }
-}
+  return (
+    <div className={styles.wrapper}>
+      <table className={styles.table}>
+        <thead className={styles.header}>
+          <TableHeader />
+        </thead>
+        <tbody>{planetsList}</tbody>
+      </table>
+    </div>
+  );
+};
 
 export default Table;

@@ -7,7 +7,8 @@ import Form from '../Form/Form';
 class App extends React.Component {
   state = {
     data: [],
-    isLoaded: false
+    isLoaded: false,
+    searchString: ''
   };
 
   componentDidMount() {
@@ -24,6 +25,12 @@ class App extends React.Component {
       })
       .catch(console.log);
   }
+
+  filterUpdate = value => {
+    this.setState({
+      searchString: value
+    });
+  };
 
   addItem = e => {
     e.preventDefault();
@@ -42,7 +49,7 @@ class App extends React.Component {
   };
 
   render() {
-    const { isLoaded, data } = this.state;
+    const { isLoaded, data, searchString } = this.state;
 
     if (!isLoaded) {
       return <div className={styles.loading}>Loading...</div>;
@@ -50,9 +57,11 @@ class App extends React.Component {
       return (
         <div className={styles.wrapper}>
           <h1 className={styles.header}>planets</h1>
-          <Search planets={data} />
-
-          <Table planets={data} />
+          <Search
+            searchString={searchString}
+            filterUpdate={this.filterUpdate}
+          />
+          <Table data={data} searchString={searchString} />
           <Form submitFn={this.addItem} />
         </div>
       );

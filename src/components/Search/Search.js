@@ -2,29 +2,22 @@ import React from 'react';
 import styles from './Search.module.scss';
 
 class Search extends React.Component {
-  state = {
-    search: ''
+  filterUpdate = () => {
+    const searchString = this.searchString.value;
+    this.props.filterUpdate(searchString);
   };
 
-  updateSearch(event) {
-    this.setState({
-      search: event.target.value
-    });
-
-    console.log(this.state.search);
-  }
-
   render() {
-    const { search } = this.state;
-
     return (
       <div className={styles.wrapper}>
         <input
           className={styles.searchBar}
           type='search'
+          ref={value => {
+            this.searchString = value;
+          }}
           placeholder='Search by planet name...'
-          value={search}
-          onChange={event => this.updateSearch(event)}
+          onChange={this.filterUpdate}
         />
         <button className={styles.searchBtn}>
           <i className={'fas fa-search'} />
