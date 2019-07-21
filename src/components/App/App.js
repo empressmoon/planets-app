@@ -36,7 +36,7 @@ class App extends React.Component {
     e.preventDefault();
 
     const newItem = {
-      name: e.target[0].value,
+      name: e.target[0].value + ' 👽 ',
       length_of_day: e.target[1].value,
       number_of_moons: e.target[2].value
     };
@@ -46,6 +46,20 @@ class App extends React.Component {
     }));
 
     e.target.reset();
+  };
+
+  sortItemsByNumber = (e, key) => {
+    const data = this.state.data;
+
+    data.sort((a, b) => a[key] - b[key]);
+    this.setState({ data });
+  };
+
+  sortItemsByName = (e, key) => {
+    const data = this.state.data;
+
+    data.sort((a, b) => a[key].localeCompare(b[key]));
+    this.setState({ data });
   };
 
   render() {
@@ -61,7 +75,12 @@ class App extends React.Component {
             searchString={searchString}
             filterUpdate={this.filterUpdate}
           />
-          <Table data={data} searchString={searchString} />
+          <Table
+            data={data}
+            searchString={searchString}
+            sortItemsByNumber={this.sortItemsByNumber}
+            sortItemsByName={this.sortItemsByName}
+          />
           <Form submitFn={this.addItem} />
         </div>
       );
